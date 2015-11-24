@@ -50,7 +50,7 @@ export class ExperienceView {
     notes: [
         'Stimulated the FAAMA\'s Annual Conventions with extraordinary graphics.'
       , 'Promoted convention Exhibitors thoughout each year, with continual email blasts, and mobile app ads.'
-      , 'Accelerated attendee envolvment with simple and intuative mobile application.'
+      , 'Accelerated attendee envolvement with simple and intuative mobile application.'
       , 'Engaged Exhibitors and FAAMA members with A-B Testing on event graphics and convention mobile app.'
       , 'Assisted event managment team with graphics & mobile app.'
       , 'Accompanied event team managment during each convention.'

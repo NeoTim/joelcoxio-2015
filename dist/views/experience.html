@@ -1,0 +1,16 @@
+<template>
+  <site-view class="au-animate" id="Experience">
+    <site-header title="Experience"> </site-header>
+    <site-article card   repeat.for="item of list">
+      <article-header date.bind="item.date">
+        ${item.name}
+      </article-header>
+      <article-note icon="local_offer">
+        ${item.occupation}
+      </article-note>
+      <article-note repeat.for="note of item.notes">
+        ${note}
+      </article-note>
+    </site-article>
+  </site-view>
+</template>

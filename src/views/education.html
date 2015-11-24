@@ -1,0 +1,21 @@
+<template>
+  <site-view class="au-animate" id="Education">
+    <site-header title="Education">
+    </site-header>
+
+    <site-article card repeat.for="item of list">
+      <article-header date.bind="item.date" link.bind="item.link">
+        ${item.name}
+      </article-header>
+      <article-location>
+        ${item.location}
+      </article-location>
+      <article-note>
+        ${item.studied}
+      </article-note>
+      <article-note repeat.for="note of item.notes">
+        ${note}
+      </article-note>
+    </site-article>
+  </site-view>
+</template>

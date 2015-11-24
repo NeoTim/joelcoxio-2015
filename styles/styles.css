@@ -3,37 +3,59 @@ body {
 }
 
 .splash {
-  text-align: center;
-  margin: 10% 0 0 0;
-  box-sizing: border-box;
+    text-align: center;
+    margin: 10% 0 0 0;
+    box-sizing: border-box;
 }
 
 .splash .message {
-  font-size: 72px;
-  line-height: 72px;
-  text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
-  text-transform: uppercase;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 72px;
+    line-height: 72px;
+    text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .splash .fa-spinner {
-  text-align: center;
-  display: inline-block;
-  font-size: 72px;
-  margin-top: 50px;
+    text-align: center;
+    display: inline-block;
+    font-size: 72px;
+    margin-top: 50px;
 }
 
 .page-host {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50px;
-  bottom: 0;
-  overflow-x: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-width: 100%;
+}
+router-view {
+  min-width: calc(100vw - 230px);
+  max-width: 100%;
+  display: flex;
+  flex: 1;
+  max-height: 100%;
+  position: relative;
   overflow-y: auto;
+  top:0;
 }
 
-@media print {
+router-view section.au-animate {
+  display: flex;
+  margin: 0;
+  position: relative;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  -o-flex: 1;
+  flex: 1;
+}
+@media print
+{
   .page-host {
     position: absolute;
     left: 10px;
@@ -46,31 +68,32 @@ body {
 }
 
 section {
-  margin: 0 20px;
+    /*margin: 0 20px;*/
 }
 
 .navbar-nav li.loader {
-  margin: 12px 24px 0 6px;
+    margin: 12px 24px 0 6px;
 }
 
 .pictureDetail {
-  max-width: 425px;
+    max-width: 425px;
 }
 
 /* animate page transitions */
+site-view.au-enter-active,
 section.au-enter-active {
-  -webkit-animation: fadeInRight 1s;
-  animation: fadeInRight 1s;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
 }
 
 div.au-stagger {
   /* 50ms will be applied between each successive enter operation */
-  -webkit-animation-delay: 50ms;
-  animation-delay: 50ms;
+  -webkit-animation-delay:50ms;
+  animation-delay:50ms;
 }
 
 .card-container.au-enter {
-  opacity: 0 !important;
+  opacity: 0!important;
 }
 
 .card-container.au-enter-active {
@@ -88,7 +111,7 @@ div.au-stagger {
   background-color: #337ab7;
   color: rgb(136, 172, 217);
   margin-bottom: 32px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
 }
 
 .card .content {
@@ -97,7 +120,7 @@ div.au-stagger {
 
 .card .content .name {
   color: white;
-  text-shadow: 0 0 6px rgba(0, 0, 0, .5);
+  text-shadow: 0 0 6px rgba(0,0,0,.5);
   font-size: 18px;
 }
 
@@ -127,6 +150,7 @@ div.au-stagger {
   border: 2px #FFF solid;
 }
 
+
 /* animation definitions */
 @-webkit-keyframes fadeInRight {
   0% {
@@ -155,6 +179,7 @@ div.au-stagger {
     transform: none
   }
 }
+
 
 @-webkit-keyframes fadeIn {
   0% {

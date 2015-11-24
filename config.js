@@ -1,21 +1,123 @@
 System.config({
-  "defaultJSExtensions": true,
-  "transpiler": "babel",
-  "babelOptions": {
+  defaultJSExtensions: true,
+  transpiler: "babel",
+  babelOptions: {
     "optional": [
       "es7.decorators",
       "es7.classProperties"
     ]
   },
-  "paths": {
+  paths: {
     "*": "dist/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
-  }
-});
+  },
+  bundles: {
+    "app-build": [
+      "app",
+      "app.html!github:systemjs/plugin-text@0.0.2",
+      "blur-image",
+      "child-router",
+      "child-router.html!github:systemjs/plugin-text@0.0.2",
+      "main",
+      "nav-bar",
+      "nav-bar.html!github:systemjs/plugin-text@0.0.2",
+      "users",
+      "users.html!github:systemjs/plugin-text@0.0.2",
+      "welcome",
+      "welcome.html!github:systemjs/plugin-text@0.0.2"
+    ],
+    "aurelia": [
+      "github:aurelia/animator-css@0.18.0",
+      "github:aurelia/animator-css@0.18.0/aurelia-animator-css",
+      "github:aurelia/binding@0.11.2",
+      "github:aurelia/binding@0.11.2/aurelia-binding",
+      "github:aurelia/bootstrapper@0.19.0",
+      "github:aurelia/bootstrapper@0.19.0/aurelia-bootstrapper",
+      "github:aurelia/dependency-injection@0.12.1",
+      "github:aurelia/dependency-injection@0.12.1/aurelia-dependency-injection",
+      "github:aurelia/event-aggregator@0.10.0",
+      "github:aurelia/event-aggregator@0.10.0/aurelia-event-aggregator",
+      "github:aurelia/fetch-client@0.4.0",
+      "github:aurelia/fetch-client@0.4.0/aurelia-fetch-client",
+      "github:aurelia/framework@0.18.0",
+      "github:aurelia/framework@0.18.0/aurelia-framework",
+      "github:aurelia/history-browser@0.10.0",
+      "github:aurelia/history-browser@0.10.0/aurelia-history-browser",
+      "github:aurelia/history@0.9.0",
+      "github:aurelia/history@0.9.0/aurelia-history",
+      "github:aurelia/loader-default@0.12.0",
+      "github:aurelia/loader-default@0.12.0/aurelia-loader-default",
+      "github:aurelia/loader@0.11.0",
+      "github:aurelia/loader@0.11.0/aurelia-loader",
+      "github:aurelia/logging-console@0.9.0",
+      "github:aurelia/logging-console@0.9.0/aurelia-logging-console",
+      "github:aurelia/logging@0.9.0",
+      "github:aurelia/logging@0.9.0/aurelia-logging",
+      "github:aurelia/metadata@0.10.1",
+      "github:aurelia/metadata@0.10.1/aurelia-metadata",
+      "github:aurelia/pal-browser@0.3.0",
+      "github:aurelia/pal-browser@0.3.0/aurelia-pal-browser",
+      "github:aurelia/pal@0.3.0",
+      "github:aurelia/pal@0.3.0/aurelia-pal",
+      "github:aurelia/path@0.11.0",
+      "github:aurelia/path@0.11.0/aurelia-path",
+      "github:aurelia/route-recognizer@0.9.0",
+      "github:aurelia/route-recognizer@0.9.0/aurelia-route-recognizer",
+      "github:aurelia/router@0.14.0",
+      "github:aurelia/router@0.14.0/aurelia-router",
+      "github:aurelia/task-queue@0.9.0",
+      "github:aurelia/task-queue@0.9.0/aurelia-task-queue",
+      "github:aurelia/templating-binding@0.17.0",
+      "github:aurelia/templating-binding@0.17.0/aurelia-templating-binding",
+      "github:aurelia/templating-resources@0.17.2",
+      "github:aurelia/templating-resources@0.17.2/array-collection-strategy",
+      "github:aurelia/templating-resources@0.17.2/aurelia-templating-resources",
+      "github:aurelia/templating-resources@0.17.2/binding-mode-behaviors",
+      "github:aurelia/templating-resources@0.17.2/binding-signaler",
+      "github:aurelia/templating-resources@0.17.2/collection-strategy",
+      "github:aurelia/templating-resources@0.17.2/collection-strategy-locator",
+      "github:aurelia/templating-resources@0.17.2/compile-spy",
+      "github:aurelia/templating-resources@0.17.2/compose",
+      "github:aurelia/templating-resources@0.17.2/css-resource",
+      "github:aurelia/templating-resources@0.17.2/debounce-binding-behavior",
+      "github:aurelia/templating-resources@0.17.2/dynamic-element",
+      "github:aurelia/templating-resources@0.17.2/focus",
+      "github:aurelia/templating-resources@0.17.2/html-sanitizer",
+      "github:aurelia/templating-resources@0.17.2/if",
+      "github:aurelia/templating-resources@0.17.2/map-collection-strategy",
+      "github:aurelia/templating-resources@0.17.2/number-strategy",
+      "github:aurelia/templating-resources@0.17.2/repeat",
+      "github:aurelia/templating-resources@0.17.2/replaceable",
+      "github:aurelia/templating-resources@0.17.2/sanitize-html",
+      "github:aurelia/templating-resources@0.17.2/show",
+      "github:aurelia/templating-resources@0.17.2/signal-binding-behavior",
+      "github:aurelia/templating-resources@0.17.2/throttle-binding-behavior",
+      "github:aurelia/templating-resources@0.17.2/update-trigger-binding-behavior",
+      "github:aurelia/templating-resources@0.17.2/view-spy",
+      "github:aurelia/templating-resources@0.17.2/with",
+      "github:aurelia/templating-router@0.18.0",
+      "github:aurelia/templating-router@0.18.0/aurelia-templating-router",
+      "github:aurelia/templating-router@0.18.0/route-href",
+      "github:aurelia/templating-router@0.18.0/route-loader",
+      "github:aurelia/templating-router@0.18.0/router-view",
+      "github:aurelia/templating@0.17.4",
+      "github:aurelia/templating@0.17.4/aurelia-templating",
+      "github:components/jquery@2.1.4",
+      "github:components/jquery@2.1.4/jquery",
+      "github:jspm/nodelibs-process@0.1.2",
+      "github:jspm/nodelibs-process@0.1.2/index",
+      "github:twbs/bootstrap@3.3.5",
+      "github:twbs/bootstrap@3.3.5/css/bootstrap.css!github:systemjs/plugin-text@0.0.2",
+      "github:twbs/bootstrap@3.3.5/js/bootstrap",
+      "npm:core-js@1.2.6",
+      "npm:core-js@1.2.6/client/shim.min",
+      "npm:process@0.11.2",
+      "npm:process@0.11.2/browser"
+    ]
+  },
 
-System.config({
-  "map": {
+  map: {
     "aurelia-animator-css": "github:aurelia/animator-css@0.18.0",
     "aurelia-binding": "github:aurelia/binding@0.11.2",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.19.0",
@@ -25,6 +127,7 @@ System.config({
     "aurelia-framework": "github:aurelia/framework@0.18.0",
     "aurelia-history": "github:aurelia/history@0.9.0",
     "aurelia-history-browser": "github:aurelia/history-browser@0.10.0",
+    "aurelia-interface-platforms": "github:joelcoxokc/aurelia-interface-platforms@master",
     "aurelia-loader": "github:aurelia/loader@0.11.0",
     "aurelia-loader-default": "github:aurelia/loader-default@0.12.0",
     "aurelia-logging": "github:aurelia/logging@0.9.0",
@@ -45,6 +148,7 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "fetch": "github:github/fetch@0.10.1",
     "font-awesome": "npm:font-awesome@4.4.0",
+    "gsap": "github:greensock/GreenSock-JS@1.17.0",
     "text": "github:systemjs/plugin-text@0.0.2",
     "github:aurelia/animator-css@0.18.0": {
       "aurelia-metadata": "github:aurelia/metadata@0.10.1",
@@ -219,4 +323,3 @@ System.config({
     }
   }
 });
-

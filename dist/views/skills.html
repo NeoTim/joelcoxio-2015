@@ -1,0 +1,56 @@
+<template>
+
+  <site-view class="au-animate" id="Skills">
+    <site-header title="Skills">
+    </site-header>
+
+    <hr>
+    <h1 class="color-grey-800">Language</h1>
+    <site-article is-row=true>
+      <div class="skill-card" repeat.for="item of languages">
+        <div class="skill-card--image">
+          <img src="${item | source}" />
+        </div>
+        <span class="skill-card--footer"> ${item | title} </span>
+      </div>
+    </site-article>
+
+    <hr>
+    <h1 class="color-grey-800">Framework</h1>
+
+    <site-article is-row=true>
+      <div class="skill-card" repeat.for="item of frameworks">
+        <div class="skill-card--image">
+          <img src="${item | source}" />
+        </div>
+        <span class="skill-card--footer"> ${item | title} </span>
+      </div>
+    </site-article>
+
+    <hr>
+    <h1 class="color-grey-800">Processors</h1>
+
+    <site-article is-row=true>
+      <div class="skill-card" repeat.for="item of preprocessors">
+        <div class="skill-card--image">
+          <img src="${item | source}" />
+        </div>
+        <span class="skill-card--footer"> ${item | title} </span>
+      </div>
+    </site-article>
+
+
+    <hr>
+    <h1 class="color-grey-800">Tools</h1>
+
+    <site-article is-row=true>
+      <div class="skill-card" repeat.for="item of tools">
+        <div class="skill-card--image">
+          <img src="${item | source}" />
+        </div>
+        <span class="skill-card--footer"> ${item | title} </span>
+      </div>
+    </site-article>
+  </site-view>
+
+</template>

@@ -85,6 +85,7 @@ aside-title {
 }
 
 aside-link {
+  cursor: pointer;
   display: flex;
   line-height: 60px;
   & > a {

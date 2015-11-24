@@ -1,19 +1,19 @@
 .skill-card {
   background-color: white;
   max-height: 150px;
-  max-width: 100px;
+  max-width: 80px;
   display: flex;
   flex-direction: column;
   @include shadow-2dp;
   margin: 0 10px 10px 0;
   img {
-    max-height: 100px;
-    max-width: 100px;
+    max-height: 80px;
+    max-width: 80px;
     top: 0;
     left: 0;
   }
   .skill-card--image {
-    min-height: 100px;
+    min-height: 80px;
   }
   .skill-card--footer {
     flex:1 0 auto;
@@ -24,5 +24,18 @@
     font-size: 16px;
     font-weight: 400;
     color: $dark-grey;
+  }
+}
+
+@include breakpoint(sm) {
+  .skill-card {
+    max-width: 100px;
+    img {
+      max-width: 100px;
+      max-height: 100px;
+    }
+    .skill-card--image {
+      min-height: 100px;
+    }
   }
 }

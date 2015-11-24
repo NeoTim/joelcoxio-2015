@@ -28,7 +28,7 @@ intro-animation {
   div#name {
     position: relative;
     transform-origin: top;
-    font-size: 120px;
+    font-size: 100px;
     strong {
       color: $accent-color;
     }
@@ -72,6 +72,12 @@ intro-animation {
       border-radius: 100%;
       transform: scale(0);
     }
+  }
+}
+
+@include breakpoint(md) {
+  div#name {
+    font-size: 120px;
   }
 }
 

@@ -28,7 +28,7 @@ site-view {
     @extend %flexbox;
     @include flex(1);
     @include flex-column;
-    padding: 20px;
+    padding: 16px;
   }
   .view-container {
   }
@@ -70,7 +70,7 @@ site-header {
 
 site-article {
   @extend %flexbox;
-  @include flex(1);
+  @include flex(1 0 auto);
   @include flex-column;
   flex-wrap: wrap;
   margin: 0 0 10px 0;
@@ -119,7 +119,7 @@ site-article {
 
 article-header {
   @extend %flexbox;
-  @include flex(1);
+  @include flex(1 0 auto);
   @include flex-row;
   @include justify-content(space-between);
   @include align-items(center);
@@ -160,4 +160,15 @@ article-location {
     color: $accent-color;
   }
   text-transform: uppercase;
+}
+
+
+@include breakpoint(md) {
+
+  site-view {
+    & > section {
+      padding: 20px;
+    }
+  }
+
 }

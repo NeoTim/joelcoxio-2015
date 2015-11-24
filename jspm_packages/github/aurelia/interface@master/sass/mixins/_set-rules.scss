@@ -1,0 +1,15 @@
+
+/**
+ * apply-ruleset
+ *
+ * @description:     Given a map of rules,
+ *                   This plugin will apply them to specific classNames
+ * @param  {Map} $ruleset:() Ruleset of Css Ryles to apply before content.
+
+ */
+@mixin set-ruls($ruleset:()) {
+
+    @include _rules($ruleset);
+
+    @conent;
+}

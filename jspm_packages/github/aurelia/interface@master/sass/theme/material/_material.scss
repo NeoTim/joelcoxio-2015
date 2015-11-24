@@ -1,0 +1,26 @@
+
+
+/******************************
+ *
+ * Aurelia Interface
+ *
+ * author  JoelCoxOKC  <Joel.cox.dev@gmail.com>
+ *
+ ******************************/
+
+/******************************
+ * sass THEME - MATREIAL
+ ******************************/
+
+/**
+ *  @register:
+ *
+ *      _classes
+ *      _functions
+ *      _palette
+ *      _placeholders
+ */
+@import '_variables.scss';
+@import 'color/_function';
+@import 'color/_palette';
+@import 'color/_placeholders';

@@ -1,0 +1,39 @@
+
+
+/*
+ * new-component
+ *
+ * @param {Map}    $args   - map of customizable property->value pairs
+ * @param {String} $module - module to pull property values from
+ *
+ * @return {Map} updated instance map
+ */
+@mixin new-component($args, $module) {
+    @include new-ai-component($args, $module) {
+        @content;
+    }
+}
+
+
+@mixin behavior($selector, $rest...) {
+    &--#{$selector} {
+        @content;
+    }
+}
+@mixin state($selector) {
+    &.is-#{$selector} {
+        @content;
+    }
+}
+@mixin when($selector) {
+    @include state($selector) {
+        @content;
+    }
+}
+@mixin child($selector) {
+  .#{$selector},
+  & > #{$selector},
+  & > &-#{$selector} {
+    @content;
+  }
+}

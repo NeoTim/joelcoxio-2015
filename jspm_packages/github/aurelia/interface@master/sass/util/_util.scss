@@ -1,0 +1,11 @@
+@function pixel($value) {
+    @return unquote($value + px);
+}
+
+@mixin i-element {
+  i,
+  i.fa,
+  i.material-icons {
+    @content;
+  }
+}

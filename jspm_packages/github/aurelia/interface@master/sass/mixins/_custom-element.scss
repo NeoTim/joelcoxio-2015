@@ -1,0 +1,21 @@
+
+$container: () !global;
+$container-instances: () !global;
+
+$element-container: () !global;
+
+@mixin customElement($name, $class:false, $both: false) {
+  #{$name},
+  .#{$name} {
+      @content;
+  }
+}
+
+
+@mixin customAttribute($name) {
+  [#{$name}] {
+    @content;
+  }
+}
+
+

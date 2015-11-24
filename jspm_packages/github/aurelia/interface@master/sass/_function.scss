@@ -1,0 +1,106 @@
+$web-colors : (
+  'primary'       : mcolor("indigo", "base"),
+  'primary-light' : lighten($primary-color, 15%),
+  'primary-dark'  : darken($primary-color, 15%),
+  'secondary'     : mcolor("pink", "accent-2"),
+  'success'       : mcolor("green", "base"),
+  'error'         : mcolor("red", "base"),
+  'link'          : mcolor("light-blue", "darken-1"),
+  'warn'          : mcolor("amber", "darken-1"),
+  'dark'          : #333,
+  'medium'        : #999,
+  'light'         : #ddd,
+  'chrome'        : #FDFDFD
+);
+
+@function colors($properties...){
+  $property: _get($web-colors, $properties...);
+  @return $property;
+}
+
+@function gutter($media:xs) {
+  @return if($media == xs, $base-gutter-xs, $base-gutter-md);
+}
+@function baseline($media:xs) {
+  @return if($media == xs, $base-baseline-xs, $base-baseline-md);
+}
+@function sub-gutter($media:xs) {
+  @return if($media == xs, $base-subgutter-xs, $base-subgutter-md);
+}
+@function gutter-px($media:xs) {
+  @return if($media == xs, $base-gutter-xs--px, $base-gutter-md--px);
+}
+@function baseline-px($media:xs) {
+  @return if($media == xs, $base-baseline-xs--px, $base-baseline-md--px);
+}
+
+@function sub-gutter-px($media:xs) {
+  @return if($media == xs, $base-subgutter-xs--px, $base-subgutter-md--px);
+}
+
+/**
+ * heading
+ * @param  {Number} $size:1 h1, h2, h3, h4, h5, h6
+ * @return {EM}      return the heading fontSize
+ */
+@function heading($size:1) {
+  @return map-get($heading--fontSize, $size);
+}
+
+@function heading-margin($size:1) {
+  $heading: heading($size);
+  @return ($heading / 2) 0 ($heading / 2.5) 0;
+}
+
+@function ai-theme($props...) {
+  @return _get($ai-textcolor--module, $props...);
+}
+
+@function ai-theme-dark($props...) {
+  @return ai-theme(dark, $props...);
+}
+
+@function ai-theme-light($props...) {
+  @return ai-theme(light, $props...);
+}
+
+@function ai-theme-primary($props...) {
+  @return ai-theme(primary, $props...);
+}
+
+@function ai-theme-accent($props...) {
+  @return ai-theme(accent, $props...);
+}
+
+@function theme-color($args...) {
+  @return _get($theme-colors, $args...);
+}
+@function theme-primary($args...) {
+  $theme: theme-color(primary);
+  @return _get($theme, $args...);
+}
+@function theme-accent($args...) {
+  $theme: theme-color(accent);
+  @return _get($theme, $args...);
+}
+@function theme-light($args...) {
+  $theme: theme-color(light);
+  @return _get($theme, $args...);
+}
+@function theme-dark($args...) {
+  $theme: theme-color(dark);
+  @return _get($theme, $args...);
+}
+
+/* SHADOWS */
+// Retrieves rgba properties form $shadow-rgba
+@function shadow-rgba($name) {
+  @return _get($shadow-rgba, $name);
+}
+
+
+
+@function at-layer($layer, $index:false) {
+  $z: _get($z-index-layers, $layer);
+  @return if($index, ($z + $index), $z);
+}

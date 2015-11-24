@@ -1,0 +1,11 @@
+
+
+@mixin translateX($val) {
+  @include transform(translateX($val));
+}
+@mixin translateY($val) {
+  @include transform(translateY($val));
+}
+@mixin translate($val) {
+  @include transform(translate($val));
+}

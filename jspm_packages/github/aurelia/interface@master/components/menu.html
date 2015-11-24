@@ -1,0 +1,6 @@
+<template>
+  <a if.bind="title" href.bind="href || javascript;">${title}</a>
+  <ai-icon if.bind="icon" icon.bind="icon"></ai-icon>
+  <menu-container ref="container"></menu-container>
+  <content></content>
+</template>

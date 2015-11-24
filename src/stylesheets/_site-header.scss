@@ -1,0 +1,16 @@
+/*
+ *  JoelCox.io
+ *  ===========
+ *
+ *   Component Site-header
+ */
+
+site-header {
+  @extend %flexbox;
+  @include flex(1);
+  @include flex-column;
+
+  position: relative;
+  min-width: 100%;
+  background-color: $primary-color;
+}

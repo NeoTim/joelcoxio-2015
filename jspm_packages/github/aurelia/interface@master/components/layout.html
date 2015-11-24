@@ -1,0 +1,10 @@
+<template>
+  <content select=".ai-navbar"></content>
+  <content select=".ai-tabbar"></content>
+  <ai-navbar if.bind="config.navbar">
+    <template replaceable part="navbar"></template>
+  </ai-navbar>
+  <layout-content>
+    <content></content>
+  </layout-content>
+</template>

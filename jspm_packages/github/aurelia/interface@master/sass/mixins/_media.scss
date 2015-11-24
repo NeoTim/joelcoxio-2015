@@ -1,0 +1,257 @@
+$default-handset-size: md;
+$default-tablet-size: md;
+$default-desktop-size: lg;
+$MOBILE-MEDIA-QUERIES--PORTRAIT: (
+    sm: (
+      min    : 0px,
+      max    : 360px,
+      columns: 4,
+      gutter : 16
+    ),
+    md: (
+      min    : 361px,
+      max    : 400px,
+      columns: 4,
+      gutter : 16
+    ),
+    lg: (
+      min    : 401px,
+      max    : 480px,
+      columns: 4,
+      gutter : 16
+    ),
+    xl: (
+      min    : 481px,
+      max    : 600px,
+      columns: 4,
+      gutter : 16
+    )
+);
+
+$MOBILE-MEDIA-QUERIES--LANDSCAPE: (
+    xs: (
+      min    : 0px,
+      max    : 480px,
+      columns: 4,
+      gutter : 16
+    ),
+    sm: (
+      min    : 481px,
+      max    : 600px,
+      columns: 8,
+      gutter : cacl(16 / 24)
+    ),
+    md: (
+      min    : 601px,
+      max    : 720px,
+      columns: 8,
+      gutter : cacl(16 / 24)
+    ),
+    lg: (
+      min    : 721px,
+      max    : 840px,
+      columns: 8,
+      gutter : cacl(16 / 24)
+    ),
+    xl: (
+      min    : 841px,
+      max    : 960px,
+      columns: 12,
+      gutter : cacl(16 / 24)
+    )
+);
+$MOBILE-MEDIA-QUERIES: (
+    portrait:  $MOBILE-MEDIA-QUERIES--PORTRAIT,
+    landscape: $MOBILE-MEDIA-QUERIES--LANDSCAPE
+);
+
+/************************************
+ *     HANDSET MEDIA
+ ***********************************/
+
+@function mobile-gutter($size:$default-handset-size, $orientation:portrait) {
+  @return _get($MOBILE-MEDIA-QUERIES, $orientation $size gutter);
+}
+
+@function mobile-columns($size:$default-handset-size, $orientation:portrait) {
+  @return _get($MOBILE-MEDIA-QUERIES, $orientation $size columns);
+}
+
+@function mobile-max($size:$default-handset-size, $orientation:portrait) {
+  @return _get($MOBILE-MEDIA-QUERIES, $orientation $size max);
+}
+
+@function mobile-min($size:$default-handset-size, $orientation:portrait) {
+  @return _get($MOBILE-MEDIA-QUERIES, $orientation $size min);
+}
+
+@mixin from-handset($size:$default-handset-size, $orientation:portrait) {
+  $min: mobile-min($size, $orientation);
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+@mixin to-handset($size:$default-handset-size, $orientation:portrait) {
+  $max: mobile-max($size, $orientation);
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin default-and-handset($size:$default-handset-size, $orientation:portrait) {
+  @content;
+  @include from-handset($size, $orientation) {
+    @content;
+  }
+}
+
+/************************************
+ *     TABLET MEDIA
+ ***********************************/
+$TABLET-MEDIA-QUERIES--PORTRAIT:(
+    sm: (
+        min     : 601px,
+        max     : 720px,
+        columns : 8,
+        gutter  : cacl(16 / 24)
+    ),
+    md: (
+        min     : 721px,
+        max     : 840px,
+        columns : 8,
+        gutter  : cacl(16 / 24)
+    ),
+    lg: (
+        min     : 841px,
+        max     : 960px,
+        columns : 12,
+        gutter  : cacl(16 / 24)
+    )
+);
+
+$TABLET-MEDIA-QUERIES--LANDSCAPE:(
+    sm: (
+        min     : 961px,
+        max     : 1024px,
+        columns : 12,
+        gutter  : 24
+    ),
+    md: (
+        min     : 1025px,
+        max     : 1280px,
+        columns : 12,
+        gutter  : 24
+    ),
+    lg: (
+        min     : 1281px,
+        max     : 1440px,
+        columns : 12,
+        gutter  : 24
+    )
+);
+
+$TABLET-MEDIA-QUERIES: (
+    portrait:  $TABLET-MEDIA-QUERIES--PORTRAIT,
+    landscape: $TABLET-MEDIA-QUERIES--LANDSCAPE
+);
+
+@function tablet-gutter($size:$default-tablet-size, $orientation:portrait) {
+  @return _get($TABLET-MEDIA-QUERIES, $orientation $size gutter);
+}
+
+@function tablet-columns($size:$default-tablet-size, $orientation:portrait) {
+  @return _get($TABLET-MEDIA-QUERIES, $orientation $size columns);
+}
+
+@function tablet-max($size:$default-tablet-size, $orientation:portrait) {
+  @return _get($TABLET-MEDIA-QUERIES, $orientation $size max);
+}
+
+@function tablet-min($size:$default-tablet-size, $orientation:portrait) {
+  @return _get($TABLET-MEDIA-QUERIES, $orientation $size min);
+}
+
+@mixin from-tablet($size: $default-tablet-size, $orientation:portrait) {
+  $min: tablet-min($size, $orientation);
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+@mixin to-tablet($size: $default-tablet-size, $orientation:portrait) {
+  $min: tablet-max($size, $orientation);
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+$DESKTOP-MEDIA-QUERIES: (
+    xs: (
+        min     : 961px,
+        max     : 1024px,
+        columns : 12,
+        gutter  : 24
+    ),
+    sm: (
+        min     : 1025px,
+        max     : 1280px,
+        columns : 12,
+        gutter  : 24
+    ),
+    lg: (
+        min     : 1281px,
+        max     : 1440px,
+        columns : 12,
+        gutter  : 24
+    ),
+    xl: (
+        min     : 1441px,
+        max     : 1660px,
+        columns : 12,
+        gutter  : 24
+    ),
+    xxl: (
+        min     : 1661px,
+        max     : 1920px,
+        columns : 12,
+        gutter  : 24
+    )
+);
+
+
+@function desktop-gutter($size:$default-desktop-size) {
+  @return _get($DESKTOP-MEDIA-QUERIES, $size gutter);
+}
+
+@function desktop-columns($size:$default-desktop-size) {
+  @return _get($DESKTOP-MEDIA-QUERIES, $size columns);
+}
+
+@function desktop-min($size:$default-desktop-size) {
+  @return _get($DESKTOP-MEDIA-QUERIES, $size min);
+}
+
+@function desktop-max($size:$default-desktop-size) {
+  @return _get($DESKTOP-MEDIA-QUERIES, $size max);
+}
+
+@mixin from-desktop($size:$default-desktop-size) {
+  $min: desktop-min($size);
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+@mixin to-desktop($size:$default-desktop-size) {
+  $max: desktop-max($size);
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+$MEDIA-QUERIES: (
+    mobile: $MOBILE-MEDIA-QUERIES,
+    tablet: $TABLET-MEDIA-QUERIES,
+    desktop: $DESKTOP-MEDIA-QUERIES
+);

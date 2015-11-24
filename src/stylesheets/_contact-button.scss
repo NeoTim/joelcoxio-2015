@@ -1,0 +1,68 @@
+contact-button {
+  min-width: 120px;
+  max-width: 120px;
+  min-height: 120px;
+  max-height: 120px;
+  background-color: transparent;
+  color: white;
+  position: relative;
+  border-radius: 120px;
+  margin: 50px 20px;
+  user-select: none;
+  cursor: pointer;
+  justify-content:space-between;
+  display: flex;
+  @include animation-default;
+  i.material-icons {
+    font-size: 70px;
+    color:$dark-grey;
+  }
+
+  &:hover {
+    @include shadow-6dp;
+  }
+
+  .icon-container {
+    position: relative;
+    min-width: 120px;
+    max-width: 120px;
+    min-height: inherit;
+    max-height: inherit;
+    @extend %flexbox;
+    @include flex(1);
+    @include align-items(center);
+    @include justify-content(center);
+    @include animation-default;
+  }
+  .content-container {
+    color: white;
+    flex:1;
+    display: flex;
+    align-items:center;
+    font-size: 30px;
+    opacity: 0;
+    visibility: hidden;
+    text-align: right;
+    justify-content:flex-end;
+    padding-right: 40px;
+    // @include animation-default;
+  }
+
+  &.is-active {
+    min-width: 80%;
+    max-width: 80%;
+    background-color: $accent-color;
+    @include shadow-6dp;
+
+    .content-container {
+      @include animation-default;
+      transition-delay: 100ms;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    i.material-icons {
+      color:white;
+    }
+  }
+}

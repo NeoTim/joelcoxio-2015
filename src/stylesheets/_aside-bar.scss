@@ -1,0 +1,135 @@
+/*
+ *  JoelCox.io
+ *  ===========
+ *
+ *   Component Aside-bar
+ */
+
+
+aside-bar {
+  max-width: 60px;
+  min-width: 60px;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  min-height: 100vh;
+  box-shadow: 2px 0px 6px rgba(0,0,0,0.2);
+  @extend %flexbox;
+  @include flex-column;
+  @include flex(1);
+  @include order(-1);
+  @include animation-default;
+  @include transform(translate3d(0,0,0));
+
+  &.aside-bar--closed {
+    transform: translateX(-100%);
+  }
+
+  &.aside-bar--folded {
+    max-width: 60px;
+  }
+
+  &.aside-bar--expand {
+    max-width: 230px;
+  }
+}
+
+aside-header {
+  display: none;
+  min-height: 120px;
+  max-height: 120px;
+  background: $primary-color;
+  padding: 16px;
+  @include flex-column;
+}
+
+aside-content {
+  background: white;
+  @extend %flexbox;
+  @include flex-column;
+  @include flex(1);
+}
+
+aside-detail {
+  @extend %flexbox;
+  @include justify-content(center);
+  @include flex-column;
+  @include align-items(flex-end);
+  @include flex(1);
+  line-height: 20px;
+  color: $light-grey;
+
+  [ocu] {
+    font-weight: 400;
+    color: $accent-color;
+  }
+
+  [email] {
+    line-height: 30px;
+    color: white;
+    margin-top: 15px;
+  }
+}
+
+aside-title {
+  @extend %flexbox;
+  @include align-items(flex-end);
+  @include flex(1);
+  @include justify-content(flex-end);
+  font-size: 40px;
+  color: white;
+  strong {
+    color: $light-grey;
+  }
+}
+
+aside-link {
+  display: flex;
+  line-height: 60px;
+  & > a {
+    @include justify-content(center);
+    text-decoration: none;
+    padding-left: 0;
+    display: flex;
+    flex: 1;
+    line-height: 60px;
+    color: $dark-grey;
+    &:visited {
+      color: $dark-grey;
+    }
+
+    i.material-icons {
+      line-height: inherit;
+    }
+
+    span {
+      font-size: 0;
+      padding-left: 0;
+      line-height: inherit;
+    }
+  }
+}
+
+@include breakpoint(md) {
+  aside-bar {
+    max-width: 230px;
+    min-width: 230px;
+    aside-header {
+      @include flexbox;
+    }
+
+    aside-link {
+      line-height: 48px;
+      & > a {
+        @include justify-content(flex-start);
+        padding-left: 24px;
+        line-height: 48px;
+        > span {
+          font-size: 1em;
+          padding-left: 24px;
+        }
+      }
+    }
+  }
+}

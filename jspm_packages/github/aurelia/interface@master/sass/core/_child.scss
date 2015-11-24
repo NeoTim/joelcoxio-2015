@@ -1,0 +1,28 @@
+
+$child-element-container: () !global;
+
+@mixin new_Child($Instruction, $rest...) {
+
+  @each $r in $rest {
+    $child-element-container: _set($child-element-container, $r, $Instruction) !global;
+  }
+
+  %#{$Instruction} {
+    @content;
+  }
+}
+
+@mixin import-child($name, $selector:null) {
+
+  @if $selector == null {
+    $selector: $name;
+  }
+
+  @if _has($child-element-container, $name) {
+    $child: _get($child-element-container, $name);
+
+    #{$selector} {
+      @extend %#{$child};
+    }
+  }
+}

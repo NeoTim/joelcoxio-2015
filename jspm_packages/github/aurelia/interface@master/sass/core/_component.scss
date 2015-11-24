@@ -1,0 +1,95 @@
+
+$component-load-container: () !default;
+$component-instruction-container: () !default;
+
+@mixin new_Component($Instruction, $alias:'', $behaviors:'', $children:'', $states:'') {
+
+  $_component: ();
+
+  @if _is-list($behaviors) {
+    $_component: _set($_component, 'behaviors', $behaviors);
+  }
+
+  @if _is-list($children) {
+    $_component: _set($_component, 'children', $children);
+  }
+
+  @if _is-list($states) {
+    $_component: _set($_component, 'states', $states);
+  }
+
+
+  $component-instruction-container: _set($component-instruction-container, $alias, $Instruction) !global;
+  $component-load-container: _set($component-load-container, $alias, $_component) !global;
+
+  %#{$Instruction} {
+    @content;
+  }
+}
+
+@mixin component($name, $all:true) {
+
+    @if _has($component-instruction-container, $name) {
+      $component: _get($component-instruction-container, $name);
+
+      @extend %#{$component};
+    }
+
+    @if $all {
+      $_component: _get($component-load-container, $name);
+      $children: _get($_component, 'children');
+      $behaviors: _get($_component, 'behaviors');
+      $states: _get($_component, 'states');
+
+      @each $child in $children {
+        @include import-child($child);
+      }
+      @each $behavior in $behaviors {
+        @include import-behavior($behavior);
+      }
+      @each $state in $states {
+        @include import-state($states);
+      }
+    }
+}
+
+
+// @mixin register-ai-elements($elements) {
+//   $el: map-get($ai-core--module, elements);
+//   $el: map-merge($elements, $el);
+//   $ai-core--module: map-merge(
+//     elements: $el,
+//   ) !global;
+// }
+
+// @mixin register-ios-elements($elements) {
+//   $el: map-get($ios-core--module, elements);
+//   $el: map-merge($elements, $el);
+//   $ios-core--module: map-merge(
+//     elements: $el,
+//   ) !global;
+// }
+
+// @mixin register-android-elements($elements) {
+//   $el: map-get($android-core--module, elements);
+//   $el: map-merge($elements, $el);
+//   $android-core--module: map-merge(
+//     elements: $el,
+//   ) !global;
+// }
+
+// @mixin Element($element) {
+//   $string: _to-tring($element);
+
+//   @if _starts-with($string, 'ios-') {
+//     $element: _get($ios-core--module, elements $element);
+//   }
+//   @else if _starts-with($string, 'android-') {
+//     $element: _get($android-core--module, elements, $element);
+//   }
+//   @else {
+//     $element: _get($ai-core--module, elements $element);
+//   }
+
+//   @extend %#{$element};
+// }

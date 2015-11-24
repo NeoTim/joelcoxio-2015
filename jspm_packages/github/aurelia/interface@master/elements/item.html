@@ -1,0 +1,13 @@
+<template click.delegate="_click($event)">
+  <content select=".ai-icon, .md-icon, .ai-media, .ai-avatar"></content>
+  <content select=".ai-checkbox, .ai-radio, .ai-switch"></content>
+  <content select=".ai-header"></content>
+
+  <accordion-container ref="accordionContainer">
+    <content select=".accordion-container"></content>
+  </accordion-container>
+  <item-container class="au-animate" ref="container">
+    <content></content>
+  </item-container>
+  <ai-icon if.bind="href || accordion" caret>ios-arrow-right</ai-icon>
+</template>

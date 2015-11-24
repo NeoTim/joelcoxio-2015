@@ -9,6 +9,10 @@ var compilerOptions = require('../babel-options');
 var assign = Object.assign || require('object.assign');
 var notify = require("gulp-notify");
 
+
+var p = require('path');
+var ai = require('node-ai').ai;
+
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
 // by errors from other gulp plugins
@@ -37,6 +41,16 @@ gulp.task('build-css', function() {
     .pipe(gulp.dest(paths.output));
 });
 
+gulp.task('build-sass', function() {
+  return ai.build({
+    input: './src/stylesheets/index.scss',
+    output: paths.output,
+    prefix: true,
+    dev: true,
+    minify: true,
+    concat: 'app.css'
+  });
+});
 // this task calls the clean task (located
 // in ./clean.js), then runs the build-system
 // and build-html tasks in parallel
@@ -44,7 +58,7 @@ gulp.task('build-css', function() {
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html', 'build-css'],
+    ['build-system', 'build-html', 'build-css', 'build-sass'],
     callback
   );
 });

@@ -1,0 +1,14 @@
+
+/**
+ * heading
+ *
+ * Applies font-size and margins
+ * @param  {Number} $size:1  Heading size
+ * @param  {Boolean} $margin:true  Toggle margins
+ */
+@mixin heading($size:1, $margin:true) {
+  font-size: heading($size);
+  @if $margin {
+    margin: heading-margin($size);
+  }
+}

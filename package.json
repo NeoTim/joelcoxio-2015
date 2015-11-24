@@ -67,6 +67,7 @@
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.0.1",
       "aurelia-history": "npm:aurelia-history@^1.0.0-beta.1",
       "aurelia-history-browser": "npm:aurelia-history-browser@^1.0.0-beta.1",
+      "aurelia-interface": "github:aurelia/interface@master",
       "aurelia-interface-platforms": "github:joelcoxokc/aurelia-interface-platforms@master",
       "aurelia-loader": "npm:aurelia-loader@^1.0.0-beta.1",
       "aurelia-loader-default": "npm:aurelia-loader-default@^1.0.0-beta.1.0.1",

@@ -1,0 +1,30 @@
+
+$states-container: () !global;
+
+@mixin new_State($Instruction, $rest...) {
+
+  @each $r in $rest {
+    $states-container: _set($states-container, $r, $Instruction) !global;
+  }
+
+  %#{$Instruction} {
+    @content;
+  }
+}
+
+
+
+@mixin import-state($name, $selector:null) {
+
+  @if $selector == null {
+    $selector: $name;
+  }
+
+  @if _has($states-container, $name) {
+    $child: _get($states-container, $name);
+
+    &.is-#{$selector} {
+      @extend %#{$child};
+    }
+  }
+}

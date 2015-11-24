@@ -1,0 +1,106 @@
+@mixin _attr($key, $value:null) {
+  @if $value != null {
+    &[#{$key}=#{$value}] {
+      @content;
+    }
+  }
+  @else {
+    &[#{$key}] {
+      @content;
+    }
+  }
+}
+
+@mixin attr($key, $props:null) {
+  [#{$key}] {
+    @if is-map($props) {
+      @include _declare($props);
+    }
+    @content;
+  }
+}
+
+@mixin _child_element($selector) {
+  & > #{$selector} {
+    @content;
+  }
+}
+
+@mixin child_element($selector) {
+  @at-root {
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin __children_select($isRoot:null, $children:null) {
+  @each $child in $children {
+    @at-root {
+      @if $isRoot == true {
+        & > #{$child} {
+          @content;
+        }
+      }
+      @else {
+        #{$child} {
+          @content;
+        }
+      }
+    }
+  }
+}
+@mixin _children($props:null, $children:null, $isRoot:true) {
+  @include __children_select($isRoot, $children) {
+
+    @if is-map($props) {
+      @include _declare($props);
+    }
+    @content;
+  }
+}
+
+@mixin children($props:null, $children:null) {
+  @include _children($props, $isRoot:false, $children:null) {
+    @content;
+  }
+}
+
+@mixin _state($selector, $props:null) {
+  &.is-#{$selector} {
+    @if is-map($props) {
+      @include _declare($props);
+    }
+    @content;
+  }
+}
+
+
+@mixin _modify($selector, $props:null) {
+  &--#{$selector} {
+    @if is-map($props) {
+      @include _declare($props);
+    }
+    @content;
+  }
+}
+
+
+@mixin _modify_each($selectors, $props:null) {
+  @each $select in $selectors {
+    @include _modify($select, $props) {
+      @content;
+    }
+  }
+}
+
+@mixin _each($selectors, $props:null) {
+  @each $select in $selectors {
+    &#{$select} {
+      @if is-map($props) {
+        @include _declare($props);
+      }
+      @content;
+    }
+  }
+}

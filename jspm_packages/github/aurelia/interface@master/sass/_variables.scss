@@ -1,0 +1,188 @@
+/*** Colors ***/
+$primary-theme-color: 'indigo';
+$accent-theme-color: 'pink';
+$primary-color: material-color('indigo', 500) !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$accent-color: material-color('pink', a200) !default;
+$secondary-color: material-color('pink', a200) !default;
+$success-color: material-color('green', 500) !default;
+$error-color: material-color('red', 500) !default;
+$link-color: material-color('light-blue', 600) !default;
+$disabled-color: material-color('grey', 400) !default;
+
+$dark-gray: material-color('grey', 700) !default;
+$medium-gray: material-color('grey', 500) !default;
+$light-gray: material-color('grey', 200) !default;
+$lighter-gray: material-color('grey', '100') !default;
+$color-text--dark: $dark-gray !default;
+$color-text--medium: $medium-gray !default;
+$color-text--light: $light-gray !default;
+$dark-grey   :$dark-gray;
+$medium-grey :$medium-gray;
+$light-grey  :$light-gray;
+$lighter-grey  :$lighter-gray;
+
+$theme-module: (
+    primary: $primary-color
+  , primary-light: $primary-color-light
+  , primary-dark: $primary-color-dark
+  , secondary: $secondary-color
+  , accent: $secondary-color
+  , success: $success-color
+  , error: $error-color
+  , link: $link-color
+  , disabled: $disabled-color
+  , dark: $dark-gray
+  , medium: $medium-gray
+  , light: $light-gray
+  , lighter: $lighter-gray
+);
+
+
+$theme-colors: (
+  primary: (
+      default: material-color($primary-theme-color, 500)
+    , light: material-color($primary-theme-color, 100)
+    , dark : material-color($primary-theme-color, 700)
+    , accent: material-color($primary-theme-color, 'a200')
+  ),
+  accent: (
+      default: material-color($accent-theme-color, 'a200')
+    , fallback: #fff
+    , light: material-color($accent-theme-color, 'a100')
+    , dark: material-color($accent-theme-color, 'a400')
+  ),
+  light: (
+      base      : #000
+    , text      : rgba(0,0,0,0.87)
+    , secondary : rgba(0,0,0,0.54)
+    , icon      : rgba(0,0,0,0.54)
+    , disable   : rgba(0,0,0,0.38)
+    , hint      : rgba(0,0,0,0.38)
+    , label     : rgba(0,0,0,0.38)
+    , divider   : rgba(0,0,0,0.12)
+    , default    : material-color('grey', 50)
+    , status-bar : material-color('grey', 300)
+    , app-bar    : material-color('grey', 100)
+    , list       : #FAFAFA
+    , paper      : #fff
+    , paper-light: rgba(255,255,255,0.3),
+  ),
+  dark: (
+      base      : #fff
+    , text      : #fff
+    , secondary : rgba(255,255,255,0.70)
+    , icon      : rgba(255,255,255,0.70)
+    , disable   : rgba(255,255,255,0.30)
+    , hint      : rgba(255,255,255,0.30)
+    , label     : rgba(255,255,255,0.30)
+    , divider   : rgba(255,255,255,0.12)
+    , default    : material-color('grey', 700)
+    , status-bar : #000
+    , app-bar    : material-color('grey', 900)
+    , list       : #303030
+    , paper      : material-color('grey', 800)
+    , paper-light: rgba(0,0,0,0.3),
+  )
+);
+
+$gutter-xs: 16;
+$gutter-md: 24;
+$baseline-xs: 72;
+$baseline-md: 80;
+$subgutter-xs: $baseline-xs - $gutter-xs;
+$subgutter-md: $baseline-md - $gutter-md;
+
+// gutters
+$base-gutter-xs: em($gutter-xs);
+$base-baseline-xs: em($baseline-xs);
+$base-subgutter-xs: em($subgutter-xs);
+
+$base-gutter-xs--px: ($gutter-xs+px);
+$base-baseline-xs--px: ($baseline-xs+px);
+$base-subgutter-xs--px: ($subgutter-xs+px);
+
+$base-gutter-md: em($gutter-md);
+$base-baseline-md: em($baseline-md);
+$base-subgutter-md: em($subgutter-md);
+
+$base-gutter-md--px: ($gutter-md+px);
+$base-baseline-md--px: ($baseline-md+px);
+$base-subgutter-md--px: ($subgutter-md+px);
+
+// Font Sizes
+$base-font-size: 1em;
+$base-font-weight: 400;
+
+$h1--fontSize: 4.2rem !default;
+$h2--fontSize: 3.56rem !default;
+$h3--fontSize: 2.92rem !default;
+$h4--fontSize: 2.28rem !default;
+$h5--fontSize: 1.64rem !default;
+$h6--fontSize: 1rem !default;
+
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// Other Sizes
+$base-border-radius: 3px;
+$base-spacing: $base-line-height * 1em;
+$small-spacing: $base-spacing / 2;
+$base-z-index: 0;
+
+
+$global-gutter-mobile   : 16px !default;
+$global-gutter-tablet   : 24px !default;
+$global-gutter-desktop  : 24px !default;
+$global-baseline-mobile : 58px !default;
+$global-baseline-tablet : 58px !default;
+$global-baseline-desktop: 64px !default;
+
+// Font Colors
+$base-font-color: $dark-gray;
+$action-color: $primary-color;
+
+// Border
+$base-border-color: $light-gray;
+
+// Background Colors
+$base-background-color: #f1f1f1;
+$secondary-background-color: lighten($base-border-color, 10%);
+
+/* SHADOWS */
+$shadow-key-umbra-opacity: 0.2;
+$shadow-key-penumbra-opacity: 0.14;
+$shadow-ambient-shadow-opacity: 0.12;
+$shadow-dps: (1, 2, 3, 4, 6, 8, 16);
+$shadow-rgba: (
+  penumbra: rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+  umbra: rgba(0, 0, 0, $shadow-key-umbra-opacity),
+  ambient: rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
+);
+
+
+/* Animation Curves */
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;
+
+
+
+/* Buttons */
+$primary-button--color: material-color('blue', 500) !default;
+$accent-button--color: material-color('pink', a200) !default;
+$success-button--color: material-color('green', 300) !default;
+$error-button--color: material-color('red', 300) !default;
+$link-button--color: material-color('light-blue', 300) !default;
+$inverse-button--color: material-color('grey', 700) !default;
+
+
+
+
+
+

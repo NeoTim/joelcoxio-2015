@@ -1,0 +1,196 @@
+@function error-return($returnValue:false, $message...) {
+  @each $msg in $message {
+    @warn $msg;
+  }
+  @return $returnValue;
+}
+
+$loader-list: () !default;
+$loader-container: () !default;
+$component-container: () !global;
+$module-container: () !global;
+
+$core-loaded-modules: () !default;
+/**
+ * load-module description]
+ * @param  {[type]} $name        [description]
+ * @param  {[type]} $meta:()     [description]
+ * @param  {[type]} $force:false [description]
+ * @param  {[type]} $insert:true [description]
+ * @return {[type]}              [description]
+ */
+@function load-module($name, $meta:(), $force:false, $insert:true) {
+
+  // Check for Name
+  @if not $name {@return error-return(false, "@Function(): load-module requires a $name parameter!");}
+
+  // IF force, then override, even if module exists;
+  @if $force {
+    @return insert-module($name, $meta);
+  }
+
+  // Get module and check for loaded state
+  $module: map-get($core-loaded-modules, $name);
+  $module: if($module and type_of($module) == map, $module, false);
+  $loaded: if($module, map-get($module, loaded), false);
+
+  // if not insert, we are assuming we just want the meta data;
+  @if not $insert {
+    @if not $module { @return error-return("@Function(): load-module trying to load a non existing module");}
+    @else {@return map-get($module, meta);}
+  }
+
+  @return $loaded or insert-module($name, $meta);
+}
+
+/**
+ * insert-module description]
+ * @param  {[type]} $name       [description]
+ * @param  {[type]} $meta:false [description]
+ * @return {[type]}             [description]
+ */
+@function insert-module($name, $meta:false) {
+  $typeof-meta: type_of($meta);
+
+  @if not $name {@return error-return("@Function(): insert-module requires a $name parameter!");}
+
+  @if $meta and $typeof-meta != map {
+    @warn "@Parameter: meta in Function():insert-module($meta) must by type_of map! and is #{$typeof-meta}";
+    @warn "@Parameter: meta === #{$meta}";
+    @return false;
+  }
+
+  $meta: if($meta, $meta, (name:$name));
+  $module: ($name: (loaded:true, meta:(name:$name)));
+  $core-loaded-modules: map-merge($core-loaded-modules, $module) !global;
+  @return true;
+}
+
+
+/**
+ *
+ * loader-import
+ * ==============
+ *
+ * @param  {String} $name Module name to be imported
+ * @expose {Placeholer}   Expose module's placeholder on the current context
+ */
+@function loader-import($container: (), $name:'') {
+    // $container: if($container == 'module', $module-container, $component-container);
+    @return _get($container, $name);
+}
+@function loader-import-module($name) {
+    @return loader-import($module-container, $name);
+}
+@function loader-import-component($name) {
+    @return loader-import($component-container, $name);
+}
+
+
+/**
+ *
+ * loader-export
+ * =============
+ *
+ * @param  {String} $module Module Defenition Type. {component|mixin|function|theme}
+ * @param  {String} $name   Actual Module name
+ * @param  {Map}    $map    Module mappings
+ * @expose {Placeholder}    Expose the module placeholder.
+ */
+@mixin export-module($name:'', $map:()){
+
+    $module-container: _set($module-container, $name, $map) !global;
+}
+
+/**
+ * loader-export-component
+ *
+ * Make sure we don't load styles more than once on each component.
+ * @param  {String} $name - component name
+ */
+@mixin loader-export-component($name:'') {
+
+    @if not _get($component-container, $name) {
+        @content;
+    }
+}
+
+/**
+ * loader-export-module
+ *
+ * Make sure we don't load modules more than once.
+ *
+ * @param  {String} $name - component name
+ */
+@mixin loader-export-module($name:'') {
+
+    @if not loader-is--loaded($module-container, $name) {
+        @content;
+    }
+}
+/**
+ *
+ * loader-is--loaded
+ * =================
+ *
+ * @description  Has the file been loaded yet? Should it reload?
+ *
+ * @param  {Map}     $map [arguments map]
+ * @return {Map}     return loaded map instance
+ */
+@function loader-is--loaded($container:(), $name:'') {
+    @return _has($container, $name);
+}
+
+/**
+ *
+ * loader-get--loaded
+ * =================
+ *
+ * @description  Has the file been loaded yet? Should it reload?
+ *
+ * @param  {Map}     $map [arguments map]
+ * @return {Map}     return loaded map instance
+ */
+@function loader-get--loaded($container:(), $name:'') {
+    @return _get($container, $name);
+}
+
+
+/**
+ *
+ * Extend mixin
+ *
+ * Dealing with the extension for you
+ *
+ * @param  {String} $placeholder  - name of the placeholder to @extend
+ * @param  {Bool} $extend: (true) - @extend or @include?
+ */
+@mixin module-extend($placeholder: '', $extend:true, $overwrite: true) {
+    // Getting placeholder's content
+    $content: map-get($module-container, $placeholder);
+
+    // key exist? Do nothing and warn the user
+    @if $content == null {
+        @warn "`#{$placeholder}` doesn't exist in $module-container.";
+    }
+
+    // $extend? true (most cases) Extend the placeholder
+    @else if $extend == true {
+        @extend %#{$placeholder};
+    }
+
+    // $extend? Include placeholder's content directly
+    @else {
+        @include _rules($content);
+    }
+}
+// Looping through the placeholders' map
+// Instanciating a placeholder everytime
+// With $extend set to false so it dumps
+// mixin's core in the placeholder's content
+@each $placeholder, $content in $module-container {
+  %#{$placeholder} {
+    @include ai-extend($placeholder, $extend: false);
+  }
+}

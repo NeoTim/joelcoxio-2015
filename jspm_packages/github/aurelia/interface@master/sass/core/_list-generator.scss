@@ -1,0 +1,157 @@
+$q: (
+  gutter: (
+    xs: 16px
+   ,lg: 24px
+  ),
+  pad:(
+    top:16px
+   ,bottom:16px
+  ),
+  left-region:(
+    min-w :0
+   ,max-w :72px
+  ),
+  right-region:(
+    min: 0
+   ,max: auto
+   ,default:0
+  ),
+  center-region:(
+    default:small,
+    states:(
+      small:(
+        rules: (
+          max-height: 16px,
+          min-height: 16px
+        ),
+        top:(
+          max-height:0
+         ,min-height:16px
+        ),
+        mid:(
+          min-height: 0
+         ,max-height: 16px
+        ),
+        bottom:(
+          min-height: 0
+         ,max-height: 0
+        )
+      ),
+      medium:(
+        rules: (
+          max-height: 32px,
+          min-height: 16px
+        ),
+        top:(
+           min-height:0
+          ,max-height:16px
+        ),
+        mid:(
+           min-height:16px
+          ,max-height:32px
+        ),
+        bottom:(
+           min-height:0
+          ,max-height:0
+        )
+      ),
+      large:(
+        rules: (
+          max-height: 48px,
+          min-height: 32px
+        ),
+        top:(
+           min-height:0
+          ,max-height:16px
+        ),
+        mid:(
+           min-height:32px
+          ,max-height:48px
+        ),
+        bottom:(
+           min-height:0
+          ,max-height:0
+        )
+      )
+    )
+  )
+);
+
+@function __inst($props...) {
+  @return _get($_instruction, $props...);
+}
+@mixin new_ListComponent(
+    $prefix:'list'
+    $left: __inst(left-region),
+    $right:__inst(right-region),
+    $center:__inst(center-region),
+    $gutter:__inst(gutter),
+    $pad:__inst(pad)
+  ) { ////////////////////// {
+
+  $padding: _get($gutter, 'xs');
+
+  @if _has($left, 'max-w') {
+    $left-region--maxWidth: _get($left, 'max-w');
+    $left-region--maxWidth: ($left-region--maxWidth - $padding);
+  }
+  @if _has($left, 'min-w') {
+    $left-region--minWidth: _get($left, 'min-w');
+    @if $left-region--minWidth > $gutter {
+      $left-region--minWidth: ($left-region--minWidth - $padding);
+    }
+  }
+  @else {
+    $left-region--minWidth: 0;
+  }
+
+  @if _has($right, 'max-w') {
+    $right-region--maxWidth: _get($right, 'max-w');
+    $right-region--maxWidth: ($right-region--maxWidth - $padding);
+  }
+  @if _has($right, 'min-w') {
+    $right-region--minWidth: _get($right, 'min-w');
+    @if $right-region--minWidth > $gutter {
+      $right-region--minWidth: ($right-region--minWidth - $padding);
+    }
+  }
+  @else {
+    $right-region--minWidth: 0;
+  }
+
+  #{$prefix}-left {
+    min-width: $left-region--minWidth;
+    max-width: $left-region--minWidth;
+    @include flex(0 1 auto);
+  }
+  #{$prefix}-right {
+    min-width: $right-region--minWidth;
+    max-width: $right-region--minWidth;
+    @include flex(0 1 auto);
+  }
+
+  @if _has($center, 'default') {
+    $center-defaultName: _get($center, 'default');
+    $center-default: _get($center, 'states', $center-defaultName);
+
+
+  }
+  #{$prefix}-center {
+      max-width:
+  }
+}
+
+
+@mixin create-central-tile($prefix, $region, $name, $info) {
+  $max: if(_has($info, 'max'), _get($info, 'max'), 0);
+  $min: if(_has($info, 'min'), _get($info, 'min'), 0);
+
+  #{$prefix}-#{$region}--#{$name} {
+    max-height: $max;
+    min-height: $max;
+  }
+
+  @each $state, $rules in _get($info, 'states') {
+
+  }
+}

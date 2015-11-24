@@ -1,0 +1,86 @@
+/*
+ *  JoelCox.io
+ *  ===========
+ *
+ *   Component Intro
+ */
+intro-animation {
+  @extend %flexbox;
+  @include flex(1);
+  @include flex-row;
+  @include align-items(center);
+  @include justify-content(center);
+
+  background-color: $primary-color;
+  color: white;
+  z-index: 6000;
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+
+  span[ui-text] {
+    position: absolute;
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: 400;
+    color: $accent-color;
+  }
+  div#name {
+    position: relative;
+    transform-origin: top;
+    font-size: 120px;
+    strong {
+      color: $accent-color;
+    }
+  }
+  span#text-u {}
+  span#text-ui {
+    transform: translateX(250%);
+  }
+  span#text-ux {
+    transform: translateX(100%);
+  }
+  span#designer, span#engineer {
+    font-size: 0;
+    span {
+      font-size: 50px;
+    }
+  }
+  span#designer {
+    transform: translateX(30%);
+  }
+  span#engineer {
+    transform: translateX(40%);
+  }
+  div#intro-circle {
+    background-color: transparent;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left:0;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      position: relative;
+      background-color: $light-grey;
+      min-width: 200vw;
+      min-height: 200vh;
+      border-radius: 100%;
+      transform: scale(0);
+    }
+  }
+}
+
+@keyframes rotate-x-one {
+  0% {
+    @include transform(rotate(0deg));
+  }
+
+  100% {
+
+  }
+}

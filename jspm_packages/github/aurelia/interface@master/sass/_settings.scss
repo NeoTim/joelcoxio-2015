@@ -1,0 +1,184 @@
+$browser-context: 16;
+
+$core-loaded-modules: ();
+$default-core-elements: (default:(default:(), light:(), dark:()), xs:(default:(), light:(), dark:()), sm:(default:(), light:(), dark:()), md:(default:(), light:(), dark:()), lg:(default:(), light:(), dark:()), xl:(default:(), light:(), dark:())) !global;
+$default-core-attributes: (default:(default:(), light:(), dark:()), xs:(default:(), light:(), dark:()), sm:(default:(), light:(), dark:()), md:(default:(), light:(), dark:()), lg:(default:(), light:(), dark:()), xl:(default:(), light:(), dark:())) !global;
+
+@if load-module(core-elements, $meta:$default-core-elements) {
+  $core-elements: $default-core-elements;
+}
+
+@if load-module(core-attributes, $meta:$default-core-attributes) {
+  $core-attributes: $default-core-attributes;
+}
+
+$use-attributes : false  !default;
+$use-classNames : false  !default;
+$use-elements   : true   !default;
+
+
+$modifier--separator: '--';
+$child--separator: '-';
+$enable-flex-box: true;
+$enable-outlines: false;
+
+/***********
+ * Font Paths
+ **********/
+$roboto-font-path: "assets/font/roboto/" !default;
+$icons-font-path: "assets/font/material-design-icons/" !default;
+$noto-font-path: "assets/font/noto/" !default;
+$arual-font-path: "assets/font/arual/" !default;
+$aicons-font-path: "assets/font/aicon/" !default;
+$mdicons-font-path: "assets/font/mdicon/" !default;
+
+/***********
+ * Font Heading
+ **********/
+
+$heading--fontSize: (
+  1: $h1--fontSize,
+  2: $h2--fontSize,
+  3: $h3--fontSize,
+  4: $h4--fontSize,
+  5: $h5--fontSize,
+  6: $h6--fontSize,
+);
+
+
+/***********
+ * Grid
+ * @columns: Set the number of columns
+ * @gutter-width: Set the width of the gutters.
+ *
+ * @breakpoint [xs] Extra small screen / phone
+ * @breakpoint [sm] Small screen / phone
+ * @breakpoint [md] Medium screen / tablet
+ * @breakpoint [lg] Large screen / desktop
+ * @breakpoint [xl] Extra large screen / wide desktop
+ **********/
+$grid-columns:               12 !default;
+$grid-gutter-width:          1.875rem !default; // 30px
+$grid-breakpoints: (
+  xs: 0,
+  sm: 34em,
+  md: 48em,
+  lg: 62em,
+  xl: 75em
+) !default;
+
+$breakpoints: $grid-breakpoints;
+
+$z-index-layers: (
+  overlay: 3000,
+  fixed-sidebar: 3001,
+  main: 2000,
+  host: 2001,
+  navbar: 2005,
+  tabbar: 2004,
+  sidebar: 2003,
+  view: 2002,
+);
+
+/***********
+ * Shadow
+ ***********/
+$shadow-index-settings: (
+  1: (
+    1:( depth:1px, size: 4px 0, opacity: 'penumbra' ),
+    2:( depth:2px, size: 1px -2px, opacity: 'umbra' ),
+    3:( depth:0px, size: 3px 0, opacity: 'ambient' ),
+  ),
+  2: (
+    1:( depth:2px, size: 2px 0, opacity: 'penumbra' ),
+    2:( depth:3px, size: 1px -2px, opacity: 'umbra' ),
+    3:( depth:1px, size: 5px 0, opacity: 'ambient' ),
+  ),
+  3: (
+    1:( depth:3px, size: 4px 0, opacity: 'penumbra' ),
+    2:( depth:3px, size: 3px -2px, opacity: 'umbra' ),
+    3:( depth:1px, size: 8px 0, opacity: 'ambient' ),
+  ),
+  4: (
+    1:( depth:4px, size: 5px 0, opacity: 'penumbra' ),
+    2:( depth:1px, size: 10px 0, opacity: 'ambient' ),
+    3:( depth:2px, size: 4px -1px, opacity: 'umbra' ),
+  ),
+  6: (
+    1:( depth:6px, size: 10px 0, opacity: 'penumbra' ),
+    2:( depth:1px, size: 18px 0, opacity: 'ambient' ),
+    3:( depth:3px, size: 5px -1px, opacity: 'umbra' ),
+  ),
+  8: (
+    1:( depth:8px, size: 10px 1px, opacity: 'penumbra' ),
+    2:( depth:3px, size: 14px 2px, opacity: 'ambient' ),
+    3:( depth:5px, size: 5px -3px, opacity: 'umbra' ),
+  ),
+  16: (
+    1:( depth:16px, size: 24px 2px, opacity: 'penumbra' ),
+    2:( depth:6px,  size: 30px 5px, opacity: 'ambient' ),
+    3:( depth:8px,  size: 10px -5px, opacity: 'umbra' ),
+  )
+);
+
+
+/***********
+ * Theme Variable
+ **********/
+$ai-textcolor--module: (
+  primary: (
+      default: material-color('indigo', 500)
+    , light: material-color('indigo', 100)
+    , dark : material-color('indigo', 700)
+    , accent: material-color('indigo', '200')
+  ),
+  accent: (
+      default: material-color('pink', 'a200')
+    , fallback: #fff
+    , light: material-color('pink', 'a100')
+    , dark: material-color('pink', 'a400')
+  ),
+  dark: (
+      base      : #fff
+    , text      : #fff
+    , secondary : rgba(255,255,255,0.70)
+    , icon      : rgba(255,255,255,0.70)
+    , disable   : rgba(255,255,255,0.30)
+    , hint      : rgba(255,255,255,0.30)
+    , divider   : rgba(255,255,255,0.12)
+    , bg: (
+        dark       : #000
+      , medium     : material-color('grey', 900)
+      , light      : #303030
+      , lighter    : material-color('grey', 800)
+
+      , status-bar : #000
+      , app-bar    : material-color('grey', 900)
+      , default    : #303030
+      , card       : material-color('grey', 800)
+      , dialog     : material-color('grey', 800)
+
+    )
+  ),
+  light: (
+      base      : #000
+    , text      : rgba(0,0,0,0.87)
+    , secondary : rgba(0,0,0,0.54)
+    , icon      : rgba(0,0,0,0.54)
+    , disable   : rgba(0,0,0,0.38)
+    , hint      : rgba(0,0,0,0.38)
+    , divider   : rgba(0,0,0,0.12)
+    , bg: (
+        dark       : material-color('grey', 300)
+      , medium     : material-color('grey', 100)
+      , light      : material-color('grey', 50)
+      , lighter    : #fff
+
+      , default    : material-color('grey', 50)
+      , status-bar : material-color('grey', 300)
+      , app-bar    : material-color('grey', 100)
+      , card       : #fff
+      , dialog     : #fff
+    )
+  )
+) !default;

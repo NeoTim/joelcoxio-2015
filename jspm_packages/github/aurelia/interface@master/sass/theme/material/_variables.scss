@@ -1,0 +1,85 @@
+@import 'color/_function';
+
+/*********************
+    Typography
+*********************/
+
+$theme-font: (
+
+  headline : (
+      'font-size'   : 24pt ,
+      'font-weight' : 300 ),
+
+  title : (
+      'font-size'   : 20px ,
+      'font-weight' : 400 ),
+
+  subheader : (
+      'font-size'   : 16pt ,
+      'font-weight' : 300 ),
+
+  body-menu : (
+      'font-size'   : 14pt ,
+      'font-weight' : 500 ),
+
+  body : (
+      'font-size'   : 14pt ,
+      'font-weight' : 300 ),
+
+  caption : (
+      'font-size'  : 12pt  ,
+      'font-weight': 300  ),
+
+  button : (
+       'font-size'  : 14pt ,
+       'font-weight': 500 )
+);
+
+$theme-Light--defaults : (
+   typo    : lighten(#000000, 13%)
+  ,bg      : lighten(#000000, 56%)
+  ,disabled: lighten(#000000, 84%)
+) !global;
+
+$theme-Dark--defaults : (
+   typo    : #FFFFFF
+  ,darker  : darken(#FFFFFF, 70%)
+  ,disabled: darken(#FFFFFF, 30%)
+) !global;
+
+
+
+$theme-Dark--device-defaults : (
+  statusbar: #000000 ,
+  appbar   : material-color('grey', '900') ,
+  bg       : #303030,
+  dialog   : material-color('grey', '800') ,
+);
+
+$theme-Light--device-defaults : (
+  statusbar: material-color('grey', '300') ,
+  appbar   : material-color('grey', '100') ,
+  bg       : material-color('grey', '50') ,
+  dialog   : #FFFFFF
+);
+
+
+
+@mixin material-typo($typo: 'body') {
+  $typo: _get($theme-font, $typo);
+  @include _declare($typo);
+}
+
+@function material-dark($properties...) {
+  @return _get($theme-Dark--device-defaults, $properties...);
+}
+@function material-dark-color($properties...) {
+  @return _get($theme-Dark--defaults, $properties...);
+}
+
+@function material-light($properties...) {
+  @return _get($theme-Light--device-defaults, $properties...);
+}
+@function material-light-color($properties...) {
+  @return _get($theme-Light--defaults, $properties...);
+}

@@ -1,0 +1,78 @@
+
+$core-elements: (default:(default:(), light:(), dark:()), xs:(default:(), light:(), dark:()), sm:(default:(), light:(), dark:()), md:(default:(), light:(), dark:()), lg:(default:(), light:(), dark:()), xl:(default:(), light:(), dark:())) !global;
+$core-attributes: (default:(default:(), light:(), dark:()), xs:(default:(), light:(), dark:()), sm:(default:(), light:(), dark:()), md:(default:(), light:(), dark:()), lg:(default:(), light:(), dark:()), xl:(default:(), light:(), dark:())) !global;
+
+@mixin Element($name, $media:default, $theme:default) {
+
+  @if $name {
+    $placeholder: "#{$name}-#{$media}-#{$theme}-element";
+    $extension: ($name, $placeholder);
+
+    $themed: _get($core-elements, $media, $theme);
+    @if not $themed {
+      $core-elements: _set($core-elements, $media, ($theme: ())) !global;
+    }
+
+    $core-elements: _set($core-elements, $media, ($theme: $extension)) !global;
+
+    %#{$placeholder} {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "@Mixin Element, $name parameter is required!";
+  }
+}
+
+
+@mixin customElement($name, $media:default, $theme:default) {
+
+  @if $name {
+    $placeholder: _get($core-elements, $media, $theme);
+
+    @if $theme {
+      $placeholder: _get($placeholder, $name);
+      $unique-placeholder: _unique-id($placeholder);
+
+      %#{$unique-placeholder} {
+        @extend %#{$placeholder};
+      }
+
+      %#{$placeholder} {
+        @content;
+      }
+    }
+
+    @else {
+      @warn "@Mixin(): customElement, theme: #{$theme} not located under the #{$name}-element";
+    }
+  }
+
+  @else {
+    @warn "@Mixin customElement, $name parameter is required!";
+  }
+}
+
+@mixin extendElement($name, $media:default, $theme:default) {
+
+  @if $name {
+    $placeholder: _get($core-elements, $media, $theme);
+
+    @if $theme {
+      $placeholder: _get($placeholder, $name);
+      @extend %#{$placeholder};
+    }
+
+    @else {
+      @warn "@Mixin(): extendElement, theme: #{$theme} not located under the #{$name}-element";
+    }
+  }
+
+  @else {
+    @warn "@Mixin extendElement, $name parameter is required!";
+  }
+
+  @content;
+}
+

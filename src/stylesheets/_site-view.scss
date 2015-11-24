@@ -1,0 +1,163 @@
+/*
+ *  JoelCox.io
+ *  ===========
+ *
+ *   Component Site-view
+ */
+
+site-view {
+  height: auto;
+  @extend %flexbox;
+  @include flex(1 0 auto);
+  @include flex-column;
+  @include transform(translate3d(0,0,0));
+
+
+  & > header {
+    min-height: 120px;
+    max-height: 120px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    background-color: $primary-color;
+    @extend %flexbox;
+    @include flex-row;
+    @include align-items(flex-end);
+  }
+
+  & > section {
+    @extend %flexbox;
+    @include flex(1);
+    @include flex-column;
+    padding: 20px;
+  }
+  .view-container {
+  }
+}
+
+site-header {
+  @extend %flexbox;
+  @include align-items(flex-end);
+  height: 120px;
+  @include flex(1);
+  min-height: 120px;
+  max-height: 120px;
+  background-color: $primary-color;
+  padding-left: 56px;
+  padding-bottom: 20px;
+  color: white;
+  position: relative;
+
+  @include flex(1 0 auto);
+
+  h1 {
+    @extend %flexbox;
+    @include flex(1);
+    @include justify-content(flex-end);
+    font-size: 60px;
+    font-weight: 400;
+    margin: 0;
+    z-index: 1000000;
+    // padding-bottom: 20px;
+  }
+
+  h5 {
+    margin:0;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+
+site-article {
+  @extend %flexbox;
+  @include flex(1);
+  @include flex-column;
+  flex-wrap: wrap;
+  margin: 0 0 10px 0;
+  padding: 10px 0;
+
+  &.is-row {
+    @include flex-direction(row);
+  }
+
+  &.is-column {
+    @include flex-direction(column);
+  }
+
+  &.align--center {
+    @include align-items(center);
+  }
+
+  &.align--start {
+    @include align-items(flex-start);
+  }
+
+  &.align--end {
+    @include align-items(flex-end);
+  }
+
+  &.justify--center {
+    @include justify-content(flex-center);
+  }
+
+  &.justify--start {
+    @include justify-content(flex-start);
+  }
+
+  &.justify--end {
+    @include justify-content(flex-end);
+  }
+
+  &[card] {
+    background-color:white;
+    @include shadow-1dp;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+
+article-header {
+  @extend %flexbox;
+  @include flex(1);
+  @include flex-row;
+  @include justify-content(space-between);
+  @include align-items(center);
+
+  position: relative;
+  margin: 10px 0;
+  a {
+    font-size: 30px;
+    font-weight: 400;
+    color: $dark-grey;
+    @include animation-default;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  span.article-date {
+    color: $dark-grey;
+    font-weight: bold;
+  }
+}
+
+article-note, article-location {
+  line-height: 30px;
+  font-weight: 400;
+  i.material-icons {
+    font-size: 1em;
+  }
+}
+article-note {
+  font-size: 14px;
+
+  i.material-icons {
+    color: $primary-color;
+  }
+}
+article-location {
+  i.material-icons {
+    color: $accent-color;
+  }
+  text-transform: uppercase;
+}

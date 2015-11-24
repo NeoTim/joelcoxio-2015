@@ -1,0 +1,62 @@
+
+// Focus shadow mixin.
+@mixin focus-shadow() {
+  box-shadow: 0 0 8px rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.36);
+}
+
+@function get-shadow($props...) {
+  @return _get($shadow-index-settings, $props...);
+}
+
+@function get-shadow-depth($dp, $index) {
+  @return get-shadow($dp, $index, depth);
+}
+
+@function get-shadow-opacity($dp, $index) {
+  $opacity: get-shadow($dp, $index, opacity);
+  @return shadow-rgba($opacity);
+}
+
+@function get-shadow-size($dp, $index) {
+  @return get-shadow($dp, $index, size);
+}
+
+@function make-shadow($dp, $index, $side:false) {
+  $opacity: get-shadow-opacity($dp, $index);
+  $size: get-shadow-size($dp, $index);
+  $depth: get-shadow-depth($dp, $index);
+  $y: if($side, 0, $depth);
+  $x: if($side, $depth, 0);
+  $x: if($side == left, ($x * -1), $x);
+  @return $x $y $size $opacity;
+}
+
+@function generate-shadow($dp, $side:false) {
+  @return make-shadow($dp, 1, $side), make-shadow($dp, 2, $side), make-shadow($dp, 3, $side);
+}
+@mixin shadow-dp($dp, $side:false) {
+  @if _includes($shadow-dps, $dp) {
+    box-shadow: generate-shadow($dp, $side);
+  }
+}
+@mixin shadow-1dp($side:false) {
+  box-shadow: generate-shadow(1, $side);
+}
+@mixin shadow-2dp($side:false) {
+  box-shadow: generate-shadow(2, $side);
+}
+@mixin shadow-3dp($side:false) {
+  box-shadow: generate-shadow(3, $side);
+}
+@mixin shadow-4dp($side:false) {
+  box-shadow: generate-shadow(4, $side);
+}
+@mixin shadow-6dp($side:false) {
+  box-shadow: generate-shadow(6, $side);
+}
+@mixin shadow-8dp($side:false) {
+  box-shadow: generate-shadow(8, $side);
+}
+@mixin shadow-16dp($side:false) {
+  box-shadow: generate-shadow(16, $side);
+}

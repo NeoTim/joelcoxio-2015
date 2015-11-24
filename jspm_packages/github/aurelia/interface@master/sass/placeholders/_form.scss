@@ -1,0 +1,11 @@
+@mixin label-element($size:16, $weight:400, $height:48, $color:false) {
+  label {
+    font-size: em($size);
+    font-weight: $weight;
+    line-height: em($height);
+    @if $color {
+      color: color($color);
+    }
+    @content;
+  }
+}

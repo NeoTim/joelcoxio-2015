@@ -1,0 +1,32 @@
+
+$behaviors-container: () !global;
+
+@mixin new_Behavior($Instruction, $rest...) {
+
+  @each $r in $rest {
+    $behaviors-container: _set($behaviors-container, $r, $Instruction) !global;
+  }
+  @at-root {
+
+    &%#{$Instruction} {
+      @content;
+    }
+  }
+
+}
+
+@mixin import-behavior($name, $selector:null) {
+
+  @if $selector == null {
+    $selector: $name;
+  }
+
+  @if _has($behaviors-container, $name) {
+    $child: _get($behaviors-container, $name);
+
+    &[#{$selector}],
+    &.#{$selector} {
+      @extend %#{$child};
+    }
+  }
+}

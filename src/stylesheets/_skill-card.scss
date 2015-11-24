@@ -1,0 +1,28 @@
+.skill-card {
+  background-color: white;
+  max-height: 150px;
+  max-width: 100px;
+  display: flex;
+  flex-direction: column;
+  @include shadow-2dp;
+  margin: 0 10px 10px 0;
+  img {
+    max-height: 100px;
+    max-width: 100px;
+    top: 0;
+    left: 0;
+  }
+  .skill-card--image {
+    min-height: 100px;
+  }
+  .skill-card--footer {
+    flex:1 0 auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 16px;
+    font-weight: 400;
+    color: $dark-grey;
+  }
+}

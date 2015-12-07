@@ -6,6 +6,7 @@ export class SkillsView {
   preprocessors = ['jade', 'coffeescript', 'sass', 'less', 'stylus', 'postcss'];
   frameworks    = ['aurelia', 'angular2.0', 'angular', 'react', 'polymer', 'ionic', 'backbone', 'laravel'];
   tools         = ['jspm', 'gulp', 'grunt', 'slush', 'yeoman'];
+  data          = ['redis', 'neo4j', 'mongo', 'sql'];
   external      = ['ai', 'ps', 'sketch'];
 }
 

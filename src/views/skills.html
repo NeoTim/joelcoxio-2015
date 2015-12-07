@@ -51,6 +51,18 @@
         <span class="skill-card--footer"> ${item | title} </span>
       </div>
     </site-article>
+
+    <hr>
+    <h1 class="color-grey-800">Data</h1>
+
+    <site-article is-row=true>
+      <div class="skill-card" repeat.for="item of data">
+        <div class="skill-card--image">
+          <img src="${item | source}" />
+        </div>
+        <span class="skill-card--footer"> ${item | title} </span>
+      </div>
+    </site-article>
   </site-view>
 
 </template>

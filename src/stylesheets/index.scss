@@ -91,7 +91,13 @@ main {
   }
 }
 
-
+.ai-media {
+  height: 100px;
+  width: 100px;
+  max-height: 100px;
+  max-width: 100px;
+  position: relative;
+}
 
 
 
@@ -101,6 +107,10 @@ i.material-icons.blue {
 
 i.material-icons.pink {
   color:$pink-A200;
+}
+
+i.material-icons.purple {
+  color:$purple-A200;
 }
 
 i.material-icons.orange {

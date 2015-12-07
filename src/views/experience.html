@@ -2,7 +2,7 @@
   <site-view class="au-animate" id="Experience">
     <site-header title="Experience"> </site-header>
     <site-article card   repeat.for="item of list">
-      <article-header date.bind="item.date">
+      <article-header date.bind="item.date" link.bind="item.link">
         ${item.name}
       </article-header>
       <article-note icon="local_offer">

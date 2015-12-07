@@ -23,6 +23,8 @@ System.register(['aurelia-framework'], function (_export) {
           _defineDecoratedPropertyDescriptor(this, 'date', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'link', _instanceInitializers);
+
+          _defineDecoratedPropertyDescriptor(this, 'image', _instanceInitializers);
         }
 
         _createDecoratedClass(ArticleHeader, [{
@@ -39,6 +41,13 @@ System.register(['aurelia-framework'], function (_export) {
             return null;
           },
           enumerable: true
+        }, {
+          key: 'image',
+          decorators: [bindable],
+          initializer: function initializer() {
+            return null;
+          },
+          enumerable: true
         }], null, _instanceInitializers);
 
         return ArticleHeader;
@@ -48,4 +57,4 @@ System.register(['aurelia-framework'], function (_export) {
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvc2l0ZS9hcnRpY2xlLWhlYWRlci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Z0JBRWEsYUFBYTs7Ozs7Ozs7OzttQ0FGbEIsUUFBUTs7O0FBRUgsbUJBQWE7OztpQkFBYixhQUFhO2dDQUFiLGFBQWE7Ozs7Ozs7OEJBQWIsYUFBYTs7dUJBQ3ZCLFFBQVE7O21CQUFRLElBQUk7Ozs7O3VCQUNwQixRQUFROzttQkFBUSxJQUFJOzs7OztlQUZWLGFBQWEiLCJmaWxlIjoiY29tcG9uZW50cy9zaXRlL2FydGljbGUtaGVhZGVyLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtiaW5kYWJsZX0gZnJvbSAnYXVyZWxpYS1mcmFtZXdvcmsnO1xuXG5leHBvcnQgY2xhc3MgQXJ0aWNsZUhlYWRlciB7XG4gIEBiaW5kYWJsZSBkYXRlID0gbnVsbDtcbiAgQGJpbmRhYmxlIGxpbmsgPSBudWxsO1xufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvc2l0ZS9hcnRpY2xlLWhlYWRlci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Z0JBRWEsYUFBYTs7Ozs7Ozs7OzttQ0FGbEIsUUFBUTs7O0FBRUgsbUJBQWE7OztpQkFBYixhQUFhO2dDQUFiLGFBQWE7Ozs7Ozs7Ozs4QkFBYixhQUFhOzt1QkFDdkIsUUFBUTs7bUJBQVEsSUFBSTs7Ozs7dUJBQ3BCLFFBQVE7O21CQUFRLElBQUk7Ozs7O3VCQUNwQixRQUFROzttQkFBUyxJQUFJOzs7OztlQUhYLGFBQWEiLCJmaWxlIjoiY29tcG9uZW50cy9zaXRlL2FydGljbGUtaGVhZGVyLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtiaW5kYWJsZX0gZnJvbSAnYXVyZWxpYS1mcmFtZXdvcmsnO1xuXG5leHBvcnQgY2xhc3MgQXJ0aWNsZUhlYWRlciB7XG4gIEBiaW5kYWJsZSBkYXRlID0gbnVsbDtcbiAgQGJpbmRhYmxlIGxpbmsgPSBudWxsO1xuICBAYmluZGFibGUgaW1hZ2UgPSBudWxsO1xufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

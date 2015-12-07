@@ -3,6 +3,7 @@ export class ExperienceView {
     name: 'Aurelia',
     date: '2015-Today',
     occupation: 'Lead UX Engineer for Aurelia Interface',
+    link:'http://aurelia.io',
     notes: [
       'Developing not only a cross-browser, but also a cross-platform UX framework call aurelia-interface',
       'Designed UX, Strictly following Google’s Material Design, Apple’s Humanize design, and Windows-guidelines.',
@@ -36,6 +37,7 @@ export class ExperienceView {
     name: 'Hack Reactor',
     date: '2014-2015',
     occupation: 'Instructor',
+    link:'http://hackreactor.com',
     notes: [
         'Engaged in the development of current HR students by being an available educational resource.'
       , 'Took advantage of time, diving into several technologies that extend the possibilities of programming.'

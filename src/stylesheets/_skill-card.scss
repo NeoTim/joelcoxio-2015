@@ -27,6 +27,18 @@
   }
 }
 
+article-header a {
+  display: flex;
+  align-items:center;
+  .skill-card {
+
+  }
+
+  .skill-card + a {
+
+  }
+}
+
 @include breakpoint(sm) {
   .skill-card {
     max-width: 100px;

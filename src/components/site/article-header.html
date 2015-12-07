@@ -1,6 +1,13 @@
 <template>
-    <a href.bind="link">
-      <content></content>
+    <a href.bind="link || 'javascript:;'">
+      <div class="skill-card" if.bind="image">
+        <div class="skill-card--image">
+          <img src.bind="item.image" />
+        </div>
+      </div>
+      <span>
+        <content></content>
+      </span>
     </a>
     <span if.bind="date" class="article-date">
       ${date}

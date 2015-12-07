@@ -5,10 +5,11 @@ import {gsap} from 'gsap';
 @inject(EventAggregator)
 export class App {
   views = [
-    {color: 'pink', icon: 'layers', viewModel: 'views/skills', title: 'Skills'},
-    {color: 'blue', icon: 'verified_user', viewModel: 'views/experience', title:'Experience'},
+    {color: 'pink',   icon: 'layers', viewModel: 'views/skills', title: 'Skills'},
+    {color: 'purple', icon: 'verified_user', viewModel: 'views/experience', title:'Experience'},
+    {color: 'blue',   icon: 'screen_share', viewModel: 'views/projects', title:'Projects'},
     {color: 'orange', icon: 'school', viewModel: 'views/education', title:'Education'},
-    {color: 'green', icon: 'phone_iphone', viewModel: 'views/contact', title: 'Contact'}
+    {color: 'green',  icon: 'phone_iphone', viewModel: 'views/contact', title: 'Contact'}
   ];
 
   constructor(events) {
@@ -58,6 +59,12 @@ export class App {
         , moduleId: './views/experience'
         , nav: true
         , title:'Experience'
+      },
+      {   route: 'projects'
+        , name: 'projects'
+        , moduleId: './views/projects'
+        , nav: true
+        , title:'Projects'
       },
       {   route: 'skills'
         , name: 'skills'

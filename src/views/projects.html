@@ -1,8 +1,8 @@
 <template>
-  <site-view class="au-animate" id="Experience">
-    <site-header title="Experience"> </site-header>
+  <site-view class="au-animate" id="Projects">
+    <site-header title="Projects"> </site-header>
     <site-article card   repeat.for="item of list">
-      <article-header date.bind="item.date" link.bind="item.link">
+      <article-header date.bind="item.date" link.bind="item.link" image.bind="item.image">
         ${item.name}
       </article-header>
       <article-note icon="local_offer">

@@ -59,7 +59,7 @@ export class ExperienceView {
 
   his = {
     name: 'H-I-S Coatings',
-    date: '2013-Today',
+    date: '2010-Today',
     occupation: 'Developer & Designer',
     notes: [
         'Custom-developed a real-time Customer Relations Platform with rich Enerprise Resource Planning integration for H-I-S Coatings company.'
